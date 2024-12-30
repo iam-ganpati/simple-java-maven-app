@@ -1,9 +1,13 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.0'
-            args '-v /root/.m2:/root/.m2'
-        }
+pipeline{
+    agent{
+    label {
+        label 'slave-02'
+        customWorkspace "/opt/jenkins-jobs"
+    }
+    }
+    tools{
+        jdk 'jdk'
+        maven 'maven3'
     }
     //stages {
       //  stage('Build') {
